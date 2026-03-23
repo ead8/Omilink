@@ -2,8 +2,6 @@
 
 **Omilink** is a link-in-bio app: one page for your socials, dev profiles, tips, and contact links. Built with **Next.js**, **shadcn/ui**, **Clerk**, and **MongoDB**.
 
-> Based on [MySocials](https://github.com/r2hu1/MySocials) by [r2hu1](https://github.com/r2hu1).
-
 ## Preview
 
 - **Homepage** — marketing / sign-in entry  
