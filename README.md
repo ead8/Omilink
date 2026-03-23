@@ -38,17 +38,3 @@
 2. Open **Dashboard → Manage**, set username, bio, and links.
 3. **Publish** your page.
 4. Share `yoursite.com/<username>`.
-
-## Contributing
-
-PRs and issues are welcome. Upstream ideas can also go to [MySocials](https://github.com/r2hu1/MySocials).
-
-## License
-
-GPL-3.0 — see [LICENCE.md](./LICENCE.md) (inherited from upstream).
-
-## Support
-
-Open an issue on this repo or contact the maintainer of your fork.
-
-Thanks for using **Omilink**.
