@@ -11,10 +11,10 @@ const poppins = Poppins({
 });
 export const metadata = {
   title: {
-    default: 'MySocials.',
-    template: '%s | MySocials',
+    default: 'Omilink',
+    template: '%s | Omilink',
   },
-  description: 'One link to bring all your social profiles into one place.',
+  description: 'One link for every profile — Omilink link-in-bio.',
    icons: {
     icon: '/favicon.svg', 
   },

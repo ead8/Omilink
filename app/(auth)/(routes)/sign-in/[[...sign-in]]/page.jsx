@@ -2,7 +2,7 @@ import { SignIn } from "@clerk/nextjs";
 
 export const metadata = {
   title: "Sign In",
-  description: "Sign in to MySocials",
+  description: "Sign in to Omilink",
 };
 
 export default function Page() {

@@ -1,66 +1,56 @@
-# MySocials
+# Omilink
 
-MySocials is an open-source link-in-bio tool designed to simplify the management of social media links. Built with Next.js, Shadcn, and MongoDB, this project provides a seamless way to share multiple links using a single landing page.
+**Omilink** is a link-in-bio app: one page for your socials, dev profiles, tips, and contact links. Built with **Next.js**, **shadcn/ui**, **Clerk**, and **MongoDB**.
+
+> Based on [MySocials](https://github.com/r2hu1/MySocials) by [r2hu1](https://github.com/r2hu1).
 
 ## Preview
 
-- Homepage
+- **Homepage** — marketing / sign-in entry  
+- **User page** — `yoursite.com/{username}` with your links  
 
-![MySocials Preview](/public/assets/preview.png)
-
-- User Page
-
-![MySocials Preview](/public/assets/homepage-dark.png)
+(Add screenshots under `public/assets/` if you want images in this README.)
 
 ## Features
 
-- **Customizable Profiles:** Create personalized profiles with unique backgrounds, colors, and profile pictures.
-- **Multiple Links:** Add and manage multiple social media links in one place.
-- **Analytics:** Not avilabe for now but i will add it in serval days.
-- **Responsive Design:** Ensures compatibility and optimal viewing across various devices.
+- **Profile** — Username, name, bio, avatar (via Clerk).
+- **Many link types** — Social, professional (incl. dev platforms), creative, messaging, storefront, misc.
+- **Private links** — Optional access key for sensitive misc links.
+- **Responsive** — Works on mobile and desktop.
 
-## Technologies Used
+## Tech stack
 
-- **Next.js:** Utilized for building a fast and scalable React-based web application.
-- **Shadcn:** Helps in styling and designing user interfaces effectively.
-- **MongoDB:** Stores and manages user data and link information.
+- Next.js (App Router) · React  
+- shadcn/ui · Tailwind  
+- Clerk · MongoDB / Mongoose  
 
 ## Installation
 
-To run this project locally, follow these steps:
-
-1. Clone the repository: `git clone https://github.com/r2hu1/mysocials.git`
-2. Install dependencies: `npm install`
-3. Set up MongoDB and configure the connection string in the application.
-4. Create a `.env.local` file
-5. Add mongodb and clerk's environment variables
-7. Start the development server: `npm run dev`
+1. Clone this repo (use **your** fork URL when you publish it):  
+   `git clone https://github.com/<your-username>/omilink.git`
+2. Install: `npm install` or `pnpm install`
+3. Create a MongoDB database and copy the connection string.
+4. Create a Clerk app and copy the API keys.
+5. Copy `.env.example` → `.env.local` and fill variables.
+6. Run: `npm run dev` → [http://localhost:3000](http://localhost:3000)
 
 ## Usage
 
-1. After setting up the project locally, access the application at `localhost:3000`.
-2. Create an account or log in.
-3. Customize your profile, add social media links, and save changes.
-4. Share your unique MySocials link with your audience.
+1. Sign up or sign in.
+2. Open **Dashboard → Manage**, set username, bio, and links.
+3. **Publish** your page.
+4. Share `yoursite.com/<username>`.
 
-## Contribution
+## Contributing
 
-Contributions to improve MySocials are welcome! Here's how you can contribute:
-
-- Fork the repository.
-- Create your branch: `git checkout -b feature/YourFeature`
-- Commit your changes: `git commit -am 'Add some feature'`
-- Push to the branch: `git push origin feature/YourFeature`
-- Submit a pull request.
-
-Please ensure any contributions align with the project's guidelines and code of conduct.
+PRs and issues are welcome. Upstream ideas can also go to [MySocials](https://github.com/r2hu1/MySocials).
 
 ## License
 
-MySocials is licensed under the [GPL-3.0 license](https://github.com/r2hu1/mysocials/#GPL-3.0-1-ov-file).
+GPL-3.0 — see [LICENCE.md](./LICENCE.md) (inherited from upstream).
 
 ## Support
 
-For any questions, issues, or support, feel free to contact [Rahul Rajput](https://rahul.eu.org).
+Open an issue on this repo or contact the maintainer of your fork.
 
-Thank you for using MySocials! We hope it simplifies your social media presence.
+Thanks for using **Omilink**.

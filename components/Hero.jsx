@@ -31,7 +31,7 @@ export default async function Hero() {
             Turn all your social profiles into a single, elegant page.
           </h1>
           <p className="max-w-2xl text-base text-muted-foreground sm:text-lg">
-            MySocials helps creators, developers, and brands publish one clean
+            Omilink helps creators, developers, and brands publish one clean
             link that brings every audience touchpoint together.
           </p>
           <div className="flex flex-wrap items-center gap-2.5 pt-2">

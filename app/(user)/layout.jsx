@@ -9,12 +9,12 @@ export default function Layout({ children }) {
       <div className="app-shell mb-10 mt-16 grid place-content-center text-center">
         <Logo />
         <p className="mt-2 text-xs text-muted-foreground">
-          An open source project by{" "}
+          Omilink — fork of{" "}
           <a
-            href="https://github.com/r2hu1"
+            href="https://github.com/r2hu1/MySocials"
             className="font-medium text-foreground underline decoration-primary/40 underline-offset-4"
           >
-            r2hu1
+            MySocials
           </a>
         </p>
       </div>
