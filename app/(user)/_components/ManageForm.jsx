@@ -57,56 +57,6 @@ export default function ManageForm() {
   const publishRef = useRef(null);
 
   useEffect(() => {
-    if (loading) {
-      fetch("/api/get")
-        .then((res) => res.json())
-        .then((data) => {
-          setLoading(false);
-          if (data.data) {
-            const d = data.data;
-            setUsername(d.username || "");
-            setName(d.name || "");
-            setBio(d.bio || "");
-            setInsta(d.instagram || "");
-            setFace(d.facebook || "");
-            setGithub(d.github || "");
-            setSnapchat(d.snapchat || "");
-            setLinkedin(d.linkedin || "");
-            setTwitter(d.twitter || "");
-            setYoutube(d.youtube || "");
-            setThreads(d.threads || "");
-            setReddit(d.reddit || "");
-            setStackoverflow(d.stackoverflow || "");
-            setLeetcode(d.leetcode || "");
-            setCodeforces(d.codeforces || "");
-            setHackerrank(d.hackerrank || "");
-            setCodechef(d.codechef || "");
-            setGeeksForGeeks(d.geeksForGeeks || "");
-            setTwitch(d.twitch || "");
-            setSoundcloud(d.soundcloud || "");
-            setSpotify(d.spotify || "");
-            setApplemusic(d.applemusic || "");
-            setDiscord(d.discord || "");
-            setTelegram(d.telegram || "");
-            setWhatsapp(d.whatsapp || "");
-            setSkype(d.skype || "");
-            setAmazon(d.amazon || "");
-            setShopify(d.shopify || "");
-            setkofi(d.kofi || "");
-            setBuyMeACoffee(d.buyMeACoffee || "");
-            setPatreon(d.patreon || "");
-            setWebsite(d.website || "");
-            setBlog(d.blog || "");
-            setEmail(d.email || "");
-            setPhone(d.phone || "");
-            setAccessKey(d.accessKey || "");
-          }
-        })
-        .catch(() => setLoading(false));
-    }
-  }, [loading]);
-
-  useEffect(() => {
     const flag = localStorage.getItem("celebratedProfile");
     if (flag) {
       party.confetti(document.body, {
@@ -190,65 +140,57 @@ export default function ManageForm() {
   };
 
   useEffect(() => {
-    if (loading) {
-      fetch("/api/get")
-        .then((res) => res.json())
-        .then((data) => {
-          setLoading(false);
+    if (!loading) return;
 
-          if (data.data !== null) {
-            console.log("Fetched user data:", data);
-            const d = data.data;
+    fetch("/api/get")
+      .then((res) => res.json())
+      .then((data) => {
+        setLoading(false);
+        if (!data.data) return;
 
-            setUsername(d.username || "");
-            setName(d.name || "");
-            setBio(d.bio || "");
-            setInsta(d.instagram || "");
-            setFace(d.facebook || "");
-            setGithub(d.github || "");
-            setSnapchat(d.snapchat || "");
-            setLinkedin(d.linkedin || "");
-            setTwitter(d.twitter || "");
-            setYoutube(d.youtube || "");
-            setThreads(d.threads || "");
-            setReddit(d.reddit || "");
-            setStackoverflow(d.stackoverflow || "");
-            setLeetcode(d.leetcode || "");
-            setCodeforces(d.codeforces || "");
-            setHackerrank(d.hackerrank || "");
-            setCodechef(d.codechef || "");
-            setGeeksForGeeks(d.geeksForGeeks || "");
-            setTwitch(d.twitch || "");
-            setSoundcloud(d.soundcloud || "");
-            setSpotify(d.spotify || "");
-            setApplemusic(d.applemusic || "");
-            setDiscord(d.discord || "");
-            setTelegram(d.telegram || "");
-            setWhatsapp(d.whatsapp || "");
-            setSkype(d.skype || "");
-            setAmazon(d.amazon || "");
-            setShopify(d.shopify || "");
-            setkofi(d.kofi || "");
-            setBuyMeACoffee(d.buyMeACoffee || "");
-            setPatreon(d.patreon || "");
-            setWebsite(d.website || "");
-            setBlog(d.blog || "");
-            setEmail(d.email || "");
-            setPhone(d.phone || "");
-            setAccessKey(d.accessKey || "");
-          } else {
-            console.warn("No user data found.");
-          }
-        })
-        .catch((err) => {
-          console.error("Error fetching user data:", err);
-          setLoading(false);
-        });
-    }
+        const d = data.data;
+        setUsername(d.username || "");
+        setName(d.name || "");
+        setBio(d.bio || "");
+        setInsta(d.instagram || "");
+        setFace(d.facebook || "");
+        setGithub(d.github || "");
+        setSnapchat(d.snapchat || "");
+        setLinkedin(d.linkedin || "");
+        setTwitter(d.twitter || "");
+        setYoutube(d.youtube || "");
+        setThreads(d.threads || "");
+        setReddit(d.reddit || "");
+        setStackoverflow(d.stackoverflow || "");
+        setLeetcode(d.leetcode || "");
+        setCodeforces(d.codeforces || "");
+        setHackerrank(d.hackerrank || "");
+        setCodechef(d.codechef || "");
+        setGeeksForGeeks(d.geeksForGeeks || "");
+        setTwitch(d.twitch || "");
+        setSoundcloud(d.soundcloud || "");
+        setSpotify(d.spotify || "");
+        setApplemusic(d.applemusic || "");
+        setDiscord(d.discord || "");
+        setTelegram(d.telegram || "");
+        setWhatsapp(d.whatsapp || "");
+        setSkype(d.skype || "");
+        setAmazon(d.amazon || "");
+        setShopify(d.shopify || "");
+        setkofi(d.kofi || "");
+        setBuyMeACoffee(d.buyMeACoffee || "");
+        setPatreon(d.patreon || "");
+        setWebsite(d.website || "");
+        setBlog(d.blog || "");
+        setEmail(d.email || "");
+        setPhone(d.phone || "");
+        setAccessKey(d.accessKey || "");
+      })
+      .catch(() => setLoading(false));
   }, [loading]);
 
   return (
-    <form className="grid gap-2 mt-5 lg:px-40" onSubmit={handlePublishEvent}>
+    <form className="grid gap-2" onSubmit={handlePublishEvent}>
       {loading ? (
         <div className="grid gap-2 mt-5">
           <Skeleton className="h-5 w-20 mt-2" />
@@ -261,14 +203,15 @@ export default function ManageForm() {
           <Skeleton className="h-10 w-full" />
         </div>
       ) : (
-        <div className="grid gap-3 mt-5">
+        <div className="grid gap-3">
           <Label htmlFor="username">Username</Label>
           <Input
             id="username"
             value={username}
             onChange={(e) => setUsername(e.target.value.trim().toLowerCase())}
-            placeholder="Username"
+            placeholder="username"
             maxLength={10}
+            className="rounded-xl bg-background/80"
           />
 
           <Label htmlFor="name">Full Name</Label>
@@ -278,6 +221,7 @@ export default function ManageForm() {
             onChange={(e) => setName(e.target.value)}
             placeholder="Your full name"
             maxLength={40}
+            className="rounded-xl bg-background/80"
           />
 
           <Label htmlFor="bio">About</Label>
@@ -287,13 +231,14 @@ export default function ManageForm() {
             onChange={(e) => setBio(e.target.value)}
             placeholder="Tell others about yourself"
             maxLength={500}
+            className="min-h-24 rounded-xl bg-background/80"
           />
 
           {/* Social Links */}
-          <p className="text-base mt-4 font-medium">Manage</p>
+          <p className="mt-6 text-base font-medium">Manage links</p>
 
           <Tabs defaultValue="social" className="w-full">
-            <TabsList>
+            <TabsList className="h-auto w-full flex-wrap justify-start gap-1 rounded-2xl p-1.5">
               <TabsTrigger value="social">Social</TabsTrigger>
               <TabsTrigger value="professional">Professional</TabsTrigger>
               <TabsTrigger value="creative">Creative</TabsTrigger>
@@ -301,7 +246,7 @@ export default function ManageForm() {
               <TabsTrigger value="storefront">Storefront</TabsTrigger>
               <TabsTrigger value="miscellaneous">Miscellaneous</TabsTrigger>
             </TabsList>
-            <TabsContent value="social" className="mt-4 space-y-2.5">
+            <TabsContent value="social" className="mt-4 space-y-2.5 rounded-2xl border border-border/70 bg-card/70 p-4 sm:p-5">
               <Label htmlFor="youtube">YouTube</Label>
               <Input
                 id="youtube"
@@ -365,7 +310,7 @@ export default function ManageForm() {
                 placeholder="https://reddit.com/user/username"
               />
             </TabsContent>
-            <TabsContent value="professional" className="mt-4 space-y-2.5">
+            <TabsContent value="professional" className="mt-4 space-y-2.5 rounded-2xl border border-border/70 bg-card/70 p-4 sm:p-5">
               <Label htmlFor="linkedin">LinkedIn</Label>
               <Input
                 id="linkedin"
@@ -438,7 +383,7 @@ export default function ManageForm() {
                 placeholder="https://auth.geeksforgeeks.org/user/username/profile"
               />
             </TabsContent>
-            <TabsContent value="creative" className="mt-4 space-y-2.5">
+            <TabsContent value="creative" className="mt-4 space-y-2.5 rounded-2xl border border-border/70 bg-card/70 p-4 sm:p-5">
               <Label htmlFor="twitch">Twitch</Label>
               <Input
                 id="twitch"
@@ -475,7 +420,7 @@ export default function ManageForm() {
                 placeholder="https://music.apple.com/profile/username"
               />
             </TabsContent>
-            <TabsContent value="messaging" className="mt-4 space-y-2.5">
+            <TabsContent value="messaging" className="mt-4 space-y-2.5 rounded-2xl border border-border/70 bg-card/70 p-4 sm:p-5">
               <Label htmlFor="discord">Discord</Label>
               <Input
                 id="discord"
@@ -512,7 +457,7 @@ export default function ManageForm() {
                 placeholder="skype:username?chat"
               />
             </TabsContent>
-            <TabsContent value="storefront" className="mt-4 space-y-2.5">
+            <TabsContent value="storefront" className="mt-4 space-y-2.5 rounded-2xl border border-border/70 bg-card/70 p-4 sm:p-5">
               <Label htmlFor="amazon" className="mt-2">
                 Amazon Storefront
               </Label>
@@ -568,7 +513,7 @@ export default function ManageForm() {
                 placeholder="https://patreon.com/username"
               />
             </TabsContent>
-            <TabsContent value="miscellaneous" className="mt-4 space-y-2.5">
+            <TabsContent value="miscellaneous" className="mt-4 space-y-2.5 rounded-2xl border border-border/70 bg-card/70 p-4 sm:p-5">
               <Label htmlFor="website" className="mt-2">
                 Personal Website
               </Label>
@@ -625,7 +570,7 @@ export default function ManageForm() {
                 value={accessKey}
                 onChange={(e) => setAccessKey(e.target.value)}
                 placeholder="Set a access key"
-                className="placeholder:text-sm placeholder:font-normal font-semibold"
+                className="rounded-xl bg-background/80 placeholder:text-sm placeholder:font-normal font-semibold"
               />
             </TabsContent>
           </Tabs>
@@ -634,7 +579,7 @@ export default function ManageForm() {
               ref={publishRef}
               type="submit"
               disabled={isPublishing}
-              className="w-full"
+              className="h-11 w-full rounded-xl"
             >
               {isPublishing ? (
                 <LoaderIcon className="w-4 h-4 animate-spin" />

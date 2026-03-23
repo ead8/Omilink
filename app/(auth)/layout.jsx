@@ -2,12 +2,12 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { ClerkLoading } from "@clerk/nextjs";
 export default function RootLayout({ children }) {
   return (
-    <main className="!bg-red-400 fixed top-0 left-0 right-0 h-full w-full flex justify-center items-center px-6">
+    <main className="fixed left-0 right-0 top-0 flex h-full w-full items-center justify-center px-6">
       <ClerkLoading>
-        <Skeleton className="h-[264px] w-[500px] max-w-[300px]" />
+        <Skeleton className="h-[264px] w-[500px] max-w-[300px] rounded-2xl" />
       </ClerkLoading>
-      <div>{children}</div>
-      <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div>
+      <div className="soft-panel rounded-3xl p-2 sm:p-4">{children}</div>
+      <div className="absolute inset-0 -z-10 h-full w-full bg-[radial-gradient(circle_at_20%_20%,oklch(0.9_0.05_300),transparent_35%),radial-gradient(circle_at_80%_0%,oklch(0.88_0.04_250),transparent_30%),var(--background)]"></div>
     </main>
   );
 }

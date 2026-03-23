@@ -1,67 +1,65 @@
-import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { currentUser } from "@clerk/nextjs/server";
-import { StarsIcon } from "lucide-react";
-import { CornerRightUp } from "lucide-react";
+import { StarsIcon, Sparkles } from "lucide-react";
 import { CornerRightDown } from "lucide-react";
 
 export default async function Hero() {
   const user = await currentUser();
   return (
-    <div className="py-14 px-6 md:px-20 lg:px-32 grid">
-      <div className="border mb-4 w-fit mx-auto py-1.5 px-3 rounded-full bg-background">
+    <section className="app-shell grain-overlay py-12">
+      <div className="soft-panel mb-8 w-fit rounded-full px-4 py-2">
         <a
-          className="hover:underline"
+          className="group inline-flex items-center gap-2 text-xs text-muted-foreground transition hover:text-foreground"
           href="https://github.com/r2hu1/mysocials"
         >
-          <p className="text-xs flex items-center justify-center gap-1">
-            <StarsIcon className="h-4 w-4" />
+          <StarsIcon className="h-3.5 w-3.5 text-primary" />
+          <p className="flex items-center justify-center gap-1">
             Contribute to this project on GitHub
-            <ArrowRight className="h-4 w-4" />
+            <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
           </p>
         </a>
       </div>
-      <div className="grid place-content-center sm:text-center gap-2">
-        <h2 className="text-3xl text-center max-w-md sm:max-w-3xl md:max-w-5xl sm:text-4xl font-medium md:text-6xl text-gray-900 dark:text-gray-50">
-          Share your every socials in{" "}
-          <span className="animate-text-gradient inline-flex bg-linear-to-r from-neutral-900 via-slate-500 to-neutral-500 bg-size-[200%_auto] bg-clip-text leading-tight text-transparent dark:from-neutral-100 dark:via-slate-400 dark:to-neutral-400">
-            one single accessable link.
+      <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+        <div className="space-y-6">
+          <span className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-card/75 px-3 py-1 text-xs font-medium text-muted-foreground">
+            <Sparkles className="h-3.5 w-3.5 text-primary" />
+            One profile. Every platform.
           </span>
-        </h2>
-        <p className="md:text-xl text-base sm:text-lg text-[13.5px] max-w-sm md:max-w-2xl text-center sm:mx-auto text-foreground/70 mt-4">
-          Effortlessly simplify and amplify your digital presence with MySocials
-          — the smart link that brings all your content, profiles, and
-          opportunities together in one beautiful, shareable place.
-        </p>
+          <h1 className="max-w-3xl text-balance text-4xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+            Turn all your social profiles into a single, elegant page.
+          </h1>
+          <p className="max-w-2xl text-base text-muted-foreground sm:text-lg">
+            MySocials helps creators, developers, and brands publish one clean
+            link that brings every audience touchpoint together.
+          </p>
+          <div className="flex flex-wrap items-center gap-2.5 pt-2">
+            <Button asChild className="rounded-full px-6">
+              <Link
+                href={!user ? "/sign-in" : "/dashboard/manage"}
+                className="gap-2"
+              >
+                Get Started
+                <CornerRightDown className="!h-4 !w-4" />
+              </Link>
+            </Button>
+            <Button variant="outline" asChild className="rounded-full px-5">
+              <Link
+                href="https://mysocialz.vercel.app/r2hu1"
+                className="flex items-center gap-1"
+              >
+                View demo <ArrowRight className="h-4 w-4 -rotate-45" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+        <div className="soft-panel rounded-3xl p-3 sm:p-4">
+          <div className="overflow-hidden rounded-2xl border border-border/70">
+            <img className="w-full" src="/assets/homepage-dark.png" alt="Preview" />
+          </div>
+        </div>
       </div>
-      <div className="flex items-center justify-center gap-2.5 mt-10">
-        <Button asChild>
-          <Link
-            href={!user ? "/sign-in" : "/dashboard/manage"}
-            className="gap-2"
-          >
-            Get Started
-            <CornerRightDown className="!h-4 !w-4" />
-          </Link>
-        </Button>
-        <Button variant="outline" asChild>
-          <Link
-            href="https://mysocialz.vercel.app/r2hu1"
-            className="flex items-center gap-1"
-          >
-            Preview <ArrowRight className="h-4 w-4 -rotate-45" />
-          </Link>
-        </Button>
-      </div>
-      <div className="mt-32 w-fit h-fit border-primary/10 border-2 rounded-lg mx-auto">
-        <img
-          className="rounded-lg"
-          src="/assets/homepage-dark.png"
-          alt="Preview"
-        />
-      </div>
-    </div>
+    </section>
   );
 }

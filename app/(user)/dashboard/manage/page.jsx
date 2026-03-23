@@ -13,26 +13,26 @@ export async function generateMetadata({ params }) {
 export default async function Page() {
   const { imageUrl, firstName } = await currentUser();
   return (
-    <div>
+    <div className="app-shell pt-6">
       <UserPageLink />
-      <div className="py-5 px-6 md:px-20 lg:px-32 mb-16">
-        <div>
-          <div className="flex flex-col items-center justify-center gap-2 mt-10">
+      <div className="soft-panel mb-16 mt-5 rounded-3xl p-5 sm:p-8">
+        <div className="grid gap-8">
+          <div className="flex flex-col items-center justify-center gap-2.5">
             <img
-              className="w-20 h-20 rounded-full"
+              className="h-20 w-20 rounded-full border border-border/70"
               src={imageUrl}
               alt={firstName}
             />
             <Label>Profile Image</Label>
-            <p className="text-xs dark:text-gray-400 text-gray-600">
+            <p className="text-xs text-muted-foreground">
               to change profile picture{" "}
               <Link
                 href="/user-profile/profile"
-                className="text-primary hover:underline"
+                className="text-primary underline decoration-primary/40 underline-offset-4"
               >
                 click here
               </Link>
-              <span className="text-red-600">*</span>
+              <span className="text-destructive">*</span>
             </p>
           </div>
           <ManageForm />

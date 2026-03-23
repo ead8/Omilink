@@ -313,3 +313,84 @@
         @apply bg-background text-foreground;
     }
 }
+
+@layer base {
+    :root {
+        --background: oklch(0.985 0.008 255);
+        --foreground: oklch(0.255 0.03 255);
+        --card: oklch(0.99 0.006 255);
+        --card-foreground: oklch(0.255 0.03 255);
+        --popover: oklch(0.992 0.005 255);
+        --popover-foreground: oklch(0.255 0.03 255);
+        --primary: oklch(0.58 0.2 279);
+        --primary-foreground: oklch(0.985 0.01 279);
+        --secondary: oklch(0.94 0.02 255);
+        --secondary-foreground: oklch(0.3 0.03 255);
+        --muted: oklch(0.95 0.015 255);
+        --muted-foreground: oklch(0.48 0.02 255);
+        --accent: oklch(0.89 0.04 315);
+        --accent-foreground: oklch(0.3 0.03 315);
+        --border: oklch(0.88 0.02 255);
+        --input: oklch(0.91 0.018 255);
+        --ring: oklch(0.67 0.16 279);
+        --radius: 0.9rem;
+    }
+
+    .dark {
+        --background: oklch(0.17 0.022 264);
+        --foreground: oklch(0.95 0.01 264);
+        --card: oklch(0.215 0.025 264);
+        --card-foreground: oklch(0.95 0.01 264);
+        --popover: oklch(0.2 0.024 264);
+        --popover-foreground: oklch(0.95 0.01 264);
+        --primary: oklch(0.76 0.16 298);
+        --primary-foreground: oklch(0.18 0.022 264);
+        --secondary: oklch(0.29 0.02 264);
+        --secondary-foreground: oklch(0.92 0.01 264);
+        --muted: oklch(0.28 0.02 264);
+        --muted-foreground: oklch(0.74 0.015 264);
+        --accent: oklch(0.34 0.05 315);
+        --accent-foreground: oklch(0.95 0.01 264);
+        --border: oklch(0.39 0.025 264);
+        --input: oklch(0.34 0.022 264);
+        --ring: oklch(0.72 0.13 298);
+    }
+
+    html,
+    body {
+        min-height: 100%;
+        background:
+            radial-gradient(circle at 0% 0%, oklch(0.96 0.03 285 / 0.65), transparent 42%),
+            radial-gradient(circle at 100% 0%, oklch(0.95 0.03 245 / 0.6), transparent 44%),
+            var(--background);
+    }
+
+    body {
+        letter-spacing: -0.01em;
+    }
+}
+
+@layer components {
+    .app-shell {
+        @apply mx-auto w-full max-w-7xl px-5 md:px-10 lg:px-14;
+    }
+
+    .grain-overlay {
+        position: relative;
+    }
+
+    .grain-overlay::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background-image: radial-gradient(oklch(0 0 0 / 0.05) 0.8px, transparent 0.8px);
+        background-size: 3px 3px;
+        opacity: 0.18;
+        mix-blend-mode: multiply;
+    }
+
+    .soft-panel {
+        @apply border border-border/70 bg-card/90 shadow-[0_12px_40px_-24px_rgba(15,23,42,0.45)] backdrop-blur-sm;
+    }
+}

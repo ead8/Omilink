@@ -8,21 +8,23 @@ import { ModeToggle } from "./ModeToggle";
 export default async function Header() {
   const user = await currentUser();
   return (
-    <header className="flex justify-between items-center py-5 px-6 sm:px-8 md:px-20 lg:px-24">
-      <div>
+    <header className="app-shell pt-5">
+      <div className="soft-panel rounded-2xl px-4 py-3 sm:px-5">
+        <div className="flex items-center justify-between gap-4">
         <Logo />
-      </div>
-      <div className="flex gap-2 items-center">
-        <Button asChild size="sm">
-          <Link
-            href={!user ? "/sign-in" : "/dashboard/manage"}
-            className="gap-2"
-          >
-            {!user ? "Get Started" : "Dashboard"}
-            <CornerRightDown className="!h-4 !w-4" />
-          </Link>
-        </Button>
-        <ModeToggle />
+          <div className="flex items-center gap-2">
+            <Button asChild size="sm" className="rounded-full px-4">
+              <Link
+                href={!user ? "/sign-in" : "/dashboard/manage"}
+                className="gap-2"
+              >
+                {!user ? "Get Started" : "Dashboard"}
+                <CornerRightDown className="!h-4 !w-4" />
+              </Link>
+            </Button>
+            <ModeToggle />
+          </div>
+        </div>
       </div>
     </header>
   );

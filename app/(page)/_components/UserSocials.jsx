@@ -14,7 +14,7 @@ import { Icons } from "./icons";
 import { FaCheckCircle } from "react-icons/fa";
 
 export default function UserSocials({ userDataName }) {
-  const [loding, setLoding] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   const [image, setImage] = useState("");
   const [bio, setBio] = useState("");
@@ -52,7 +52,7 @@ export default function UserSocials({ userDataName }) {
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          setLoding(false);
+          setLoading(false);
           if (data.data !== null) {
             setImage(data.data.image);
             setName(data.data.name);
@@ -65,13 +65,13 @@ export default function UserSocials({ userDataName }) {
     } catch (error) {
       console.error(error);
     } finally {
-      setLoding(false);
+      setLoading(false);
     }
   }, []);
 
-  const proffesional = [
-    "linkedIn",
-    "gitHub",
+  const professional = [
+    "linkedin",
+    "github",
     "stackoverflow",
     "leetcode",
     "codeforces",
@@ -88,10 +88,10 @@ export default function UserSocials({ userDataName }) {
     "threads",
     "reddit",
   ];
-  const creative = ["twitch", "soundcloud", "spotify", "apple music"];
+  const creative = ["twitch", "soundcloud", "spotify", "applemusic"];
   const messaging = ["discord", "telegram", "whatsapp", "skype"];
   const storefront = [
-    "amazon storefront",
+    "amazon",
     "shopify",
     "ko-fi",
     "buy me a coffee",
@@ -100,22 +100,22 @@ export default function UserSocials({ userDataName }) {
   const miscellaneous = ["website", "blog", "email", "phone"];
 
   return (
-    <div className="relative overflow-x-hidden px-6 md:px-20 lg:px-32 py-20 grid place-content-center">
-      <div className="absolute top-0 z-[-2] h-screen w-screen dark:bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
+    <div className="app-shell relative grid place-content-center overflow-x-hidden py-16">
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_70%_60%_at_50%_-10%,color-mix(in_oklch,var(--primary)_26%,transparent),transparent)]"></div>
       <div
         onClick={() => {
           navigator.share({ url: location.href, title: name, text: name });
         }}
-        className="fixed top-5 right-5 md:top-10 md:right-32"
+        className="fixed right-5 top-5 md:right-10 md:top-8"
       >
         <Button
           variant="pulseBtn"
-          className="w-10 h-10 rounded-full p-0 flex items-center justify-center"
+          className="flex h-10 w-10 items-center justify-center rounded-full p-0"
         >
           <Share2 className="w-4 h-4" />
         </Button>
       </div>
-      <div className="grid place-content-center mb-5 mt-14">
+      <div className="mb-4 mt-12 grid place-content-center">
         {!image && <Skeleton className="h-24 w-24 rounded-full" />}
 
         {image && (
@@ -128,21 +128,21 @@ export default function UserSocials({ userDataName }) {
           </div>
         )}
       </div>
-      <div className="grid place-content-center mb-6 text-center gap-3 px-2">
+      <div className="mb-8 grid place-content-center gap-3 px-2 text-center">
         <h1 className="text-3xl font-bold flex justify-center items-center text-center">
           {name}
           {name && <FaCheckCircle className="!h-4 !w-4 opacity-50 ml-2" />}
         </h1>
 
-        <p className="text-base dark:text-gray-400 text-foreground/80 max-w-[320px] mx-auto sm:line-clamp-2 line-clamp-none">
+        <p className="mx-auto max-w-[420px] text-base text-muted-foreground sm:line-clamp-2 line-clamp-none">
           {bio?.length > 70 ? bio.slice(0, 70) : bio}
         </p>
       </div>
 
-      {loding && <Skeleton className="h-8 mb-5 w-40 mx-auto" />}
-      {loding && <Skeleton className="h-14 mb-5 w-[300px] mx-auto" />}
+      {loading && <Skeleton className="mx-auto mb-5 h-8 w-40" />}
+      {loading && <Skeleton className="mx-auto mb-5 h-14 w-[300px]" />}
 
-      {loding && (
+      {loading && (
         <div className="grid gap-3 max-w-[600px]">
           <Skeleton className="h-14 w-[300px] mx-auto" />
           <Skeleton className="h-14 w-[300px] mx-auto" />
@@ -151,12 +151,11 @@ export default function UserSocials({ userDataName }) {
         </div>
       )}
 
-      {!loding && (
+      {!loading && (
         <div className="grid mt-10 gap-3">
           {Object.entries(links)
             .filter(([key]) => social.includes(key))
             .map(([key, value]) => {
-              const Icon = Icons[key];
               return typeof value === "string" ? (
                 <LinkCard
                   key={key}
@@ -167,9 +166,8 @@ export default function UserSocials({ userDataName }) {
               ) : null;
             })}
           {Object.entries(links)
-            .filter(([key]) => proffesional.includes(key))
+            .filter(([key]) => professional.includes(key))
             .map(([key, value]) => {
-              const Icon = Icons[key];
               return typeof value === "string" ? (
                 <LinkCard
                   key={key}
@@ -182,7 +180,6 @@ export default function UserSocials({ userDataName }) {
           {Object.entries(links)
             .filter(([key]) => creative.includes(key))
             .map(([key, value]) => {
-              const Icon = Icons[key];
               return typeof value === "string" ? (
                 <LinkCard
                   key={key}
@@ -195,7 +192,6 @@ export default function UserSocials({ userDataName }) {
           {Object.entries(links)
             .filter(([key]) => messaging.includes(key))
             .map(([key, value]) => {
-              const Icon = Icons[key];
               return typeof value === "string" ? (
                 <LinkCard
                   key={key}
@@ -208,7 +204,6 @@ export default function UserSocials({ userDataName }) {
           {Object.entries(links)
             .filter(([key]) => storefront.includes(key))
             .map(([key, value]) => {
-              const Icon = Icons[key];
               return typeof value === "string" ? (
                 <LinkCard
                   key={key}
@@ -220,25 +215,24 @@ export default function UserSocials({ userDataName }) {
             })}
 
           {links.accessKey && (
-            <div className="border mt-10 px-4 py-3 rounded-lg mx-auto max-w-[420px]">
-              <p className="text-sm text-foreground/80 mb-2">Private Links</p>
+            <div className="mx-auto mt-10 max-w-[460px] rounded-2xl border border-border/70 bg-card/70 px-4 py-3">
+              <p className="mb-2 text-sm font-medium text-foreground">Private links</p>
               <div className="flex items-center gap-2">
                 <Input
                   value={inputKey}
                   onChange={(e) => setInputKey(e.target.value)}
                   placeholder="Enter Access Key"
                 />
-                <Button onClick={handleInput}>Unlock</Button>
+                <Button onClick={handleInput} className="rounded-xl">Unlock</Button>
               </div>
               {accessError && (
-                <p className="text-red-500 text-sm mt-2">Invalid Access Key</p>
+                <p className="mt-2 text-sm text-red-500">Invalid Access Key</p>
               )}
               {showPrivate && (
                 <div className="mt-4 grid gap-3">
                   {Object.entries(links)
                     .filter(([key]) => miscellaneous.includes(key))
                     .map(([key, value]) => {
-                      const Icon = Icons[key];
                       return typeof value === "string" ||
                         typeof value === "number" ? (
                         <LinkCard
@@ -267,16 +261,13 @@ export default function UserSocials({ userDataName }) {
       {error && (
         <div className="-mt-20 mb-20 grid place-content-center">
           <h1 className="font-bold text-center text-3xl mt-5">
-            User not found.<span className="text-blue-600">.</span>
+            User not found.<span className="text-primary">.</span>
           </h1>
           <p className="text-center text-sm mt-2">
             Please double-check the username <br /> and try again.
           </p>
-          <Button
-            href="https://mysocialz.vercel.app/"
-            className="mt-5 w-full max-w-sm mx-auto"
-          >
-            Back
+          <Button asChild className="mx-auto mt-5 w-full max-w-sm rounded-xl">
+            <Link href="/">Back</Link>
           </Button>
         </div>
       )}

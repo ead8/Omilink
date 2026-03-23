@@ -22,13 +22,21 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      appearance={{
+        elements: {
+          card: "rounded-3xl border border-border/70 bg-card/92 shadow-none",
+          formButtonPrimary: "rounded-xl bg-primary text-primary-foreground hover:bg-primary/90",
+          footerActionLink: "text-primary hover:text-primary/80",
+        },
+      }}
+    >
       <html
         lang="en"
         className={poppins.className}
         suppressHydrationWarning
       >
-        <body>
+        <body className="antialiased">
           <NextTopLoader
             color="hsl(229 100% 62%)"
             initialPosition={0.08}

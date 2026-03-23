@@ -27,21 +27,21 @@ export default function UserPageLink() {
   }, []);
 
   return (
-    <div className="px-6 md:px-20 lg:px-32">
+    <div>
       {!username ? (
-        <Alert className="p-3">
+        <Alert className="rounded-2xl border-border/70 bg-card/70 p-3">
           <AlertTitle className="text-sm">Just so you know! </AlertTitle>
-          <AlertDescription className="text-xs text-gray-600 dark:text-gray-400">
+          <AlertDescription className="text-xs text-muted-foreground">
             Scroll down to publish your page and claim your personalized URL.
           </AlertDescription>
         </Alert>
       ) : (
         <div>
-          <Alert className="p-3">
+          <Alert className="rounded-2xl border-border/70 bg-card/70 p-3">
             <AlertTitle className="text-sm">
               Congrats {name?.split(" ")[0]}! your page is ready!{" "}
             </AlertTitle>
-            <AlertDescription className="text-xs text-gray-600 dark:text-gray-400 underline">
+            <AlertDescription className="text-xs text-muted-foreground underline decoration-primary/45 underline-offset-4">
               <Link
                 target="_blank"
                 href={`https://${location.host}/${username}`}

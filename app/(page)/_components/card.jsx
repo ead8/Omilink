@@ -6,9 +6,9 @@ export default function LinkCard({ title, href, icon, className }) {
       <Link
         href={href}
         target="_blank"
-        className={`w-full transition md:w-[420px] sm:w-[300px] mx-auto h-14 bg-card border flex items-center justify-center rounded-lg hover:bg-primary hover:text-white hover:scale-95 relative dark:hover:text-black ${className}`}
+        className={`group relative mx-auto flex h-14 w-full items-center justify-center rounded-2xl border border-border/70 bg-card/80 text-foreground transition duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:bg-primary/10 md:w-[440px] ${className}`}
       >
-        <div className="absolute left-5">{icon}</div>
+        <div className="absolute left-5 text-primary/85 transition group-hover:text-primary">{icon}</div>
         {title}
       </Link>
     )
